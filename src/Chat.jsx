@@ -2,6 +2,7 @@ import React from 'react';
 import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
 import { Segment } from "semantic-ui-react";
+import Thanks from './Thanks';
 
 const Chat=() =>{
   const theme = {
@@ -38,61 +39,104 @@ const Chat=() =>{
     {
       id: 'services',
       options: [
-        { value: "Service", label: "Service", trigger: "Service" },
-        { value: "Return", label: "Return", trigger: "Return" },
+        { value: "One", label: "One", trigger: "One" },
+        { value: "Two", label: "Two", trigger: "Two" },
       ],
     },
     {
-      id: 'Service',
-      message: 'Thanks for choosing Service',
-      end: true,
+      id: 'One',
+      message: 'Favorite color?',
+      trigger:'color'
     },
     {
-      id: 'Return',
-      message: 'Sure! what is the reason for return?',
-      trigger:'reason'
+      id:'color',
+      user:true,
+      trigger:'thy'
     },
     {
-      id:'reason',
+      id:'thy',
+      message:'Ask anything else?',
+      trigger:'opt'
+    },
+
+    {
+      id:'opt',
       options: [
-        { value: "malfunction", label: "malfunction", trigger: "malfunction" },
-        { value: "damage", label: "damage", trigger: "damage" },
+        { value: "Yes", label: "Yes", trigger: "Yes" },
+        { value: "No", label: "No", trigger: "No" },
       ],
     },
     {
-      id:'damage',
-      message:'Sorry to hear that! Can you describe more?',
-      trigger:'desc0',
+      id:'Yes',
+      message:'Sure!',
+      trigger:'services',
     },
     {
-      id:'desc0',
-      user:true,
-      trigger:'ty',
-    },
-    {
-      id:'ty',
-      message:'sorry for your {previousValue} thanks for submitting',
+      id:'No',
+      message:'Thanks',
       end:true,
     },
     {
-      id:'malfunction',
-      message:'Could you describe more?',
-      trigger:'desc',
+      id: 'Two',
+      message: 'Favorite food?',
+      trigger:'food'
     },
     {
-      id:'desc',
+      id:'food',
       user:true,
-      trigger:'thanks',
+      trigger:'thy1'
     },
     {
-      id:'thanks',
-      message:'thanks for submitting',
-      end:true,
-    }
+      id:'thy1',
+      message:'Thats great {previousValue} Ask anything else?',
+      trigger:'opt'
+    },
+    // {
+    //   id: 'Return',
+    //   message: 'Sure! what is the reason for return?',
+    //   trigger:'reason'
+    // },
+    // {
+    //   id:'reason',
+    //   options: [
+    //     { value: "malfunction", label: "malfunction", trigger: "malfunction" },
+    //     { value: "damage", label: "damage", trigger: "damage" },
+    //   ],
+    // },
+    // {
+    //   id:'damage',
+    //   message:'Sorry to hear that! Can you describe more?',
+    //   trigger:'desc0',
+    // },
+    // {
+    //   id:'desc0',
+    //   user:true,
+    //   trigger:'ty',
+    // },
+    // {
+    //   id:'ty',
+    //   message:'sorry for your {previousValue} thanks for submitting',
+    //   end:true,
+    // },
+    // {
+    //   id:'malfunction',
+    //   message:'Could you describe more?',
+    //   trigger:'desc',
+    // },
+    // {
+    //   id:'desc',
+    //   user:true,
+    //   trigger:'thanks',
+    // },
+    // {
+    //   id:'thanks',
+    //   message:'thanks for submitting',
+    //   end:true,
+    // }
   ];
 
   return (
-    
+    <div>
       <ThemeProvider theme={theme}>
          <React.Fragment>
       <Segment floated="center">
@@ -100,6 +144,7 @@ const Chat=() =>{
       </Segment>
     </React.Fragment>
       </ThemeProvider>
+      </div>
     );
   
 }
